@@ -1,0 +1,54 @@
+body {
+    background: none;
+}
+
+.container {
+    margin: 50px auto 20px;
+    border: 1px solid #ccc;
+    background: #fff;
+    position: relative;
+}
+
+.container > h3 {
+    line-height: 100px;
+}
+
+.row > p {
+    line-height: 50px;
+    color: #666666;
+}
+
+.row > p > span:last-child {
+    color: #333333;
+}
+
+.download {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.download button {
+    height: 24px;
+    padding-left: 25px;
+    border: none;
+    color: #999;
+    background: url("../img/pdf1.png") no-repeat;
+}
+
+.download button:hover {
+    color: #3a98fc;
+    background: url("../img/pdf2.png") no-repeat;
+}
+
+@media (max-width: 768px) {
+    .container {
+        border: none;
+        margin-bottom: 0;
+    }
+
+    .download {
+        right: 10px;
+        top: -10px;
+    }
+}

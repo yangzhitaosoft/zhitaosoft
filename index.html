@@ -1,17 +1,200 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>证书查询结果</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="./common.css">
+    <link rel="stylesheet" href="./detail.css">
 </head>
+<style>
+    
+html, body, h1, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.header {
+    height: 160px;
+    opacity: .8;
+    background: url(./header-left.png) no-repeat left center, 
+    url(./header-right.png) no-repeat right center, #3a97fc;
+}
+
+.header > h1 {
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 160px;
+    font-size: 48px;
+    color: #fff;
+}
+
+.header > h1 > .logo {
+    margin-right: 33px;
+}
+
+.container > h3 {
+    text-align: center;
+    line-height: 200px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 36px;
+    text-align: center;
+    color: #888;
+    font-size: 16px;
+}
+img{
+    vertical-align: middle;
+}
+@media (max-width: 768px) {
+    .header {
+        height: 60px;
+    }
+
+    .header h1 {
+        font-size: 16px;
+        height: 60px;
+        line-height: 60px;
+    }
+
+    .header img {
+        width: 48px;
+        height: 48px;
+        margin-right: 10px !important;
+    }
+
+    .container h3 {
+        line-height: 120px;
+        font-size: 18px;
+    }
+
+    label {
+        text-align: right;
+    }
+}
+
+.img-container {
+	position: relative;
+}
+
+.img-container1 {
+	position: relative;
+}
+
+.add-img {
+	position: absolute;
+	bottom: 15%;
+	right: 27%;
+	width: 22%;
+	height: 15%;
+}
+
+/* .add-img1 {
+	position: absolute;
+	bottom: 6%;
+	right: 13%;
+	width: 22%;
+	height: 15%;
+} */
+
+.add-img>img {
+	width: 100%;
+	height: 100%;
+}
+
+/* .add-img1>img {
+	width: 100%;
+	height: 100%;
+} */
+</style>
 <body>
-    <div>基础复习</div>
-    <div>
-        <h2>Promise:</h2>
-        <h3>Promise基本使用</h3>
-        <button id="btn" style="border: none;background-color: deepskyblue;padding: 10px 30px;color: #fff;font-size: 16px;border-radius: 8px;">点击抽奖</button>
-    </div>
+    <header class="header">
+		<h1>
+			<img class="logo" src="http://api.zhitaosoft.com:80/dzzz/static/search/img/logo.png">陕西省住建厅综合服务中心
+		</h1>
+	</header>
+    <div class="container" id="statt" style="display: block;">
+		<h3>证书查询结果</h3>
+		<div class="row">
+			<p class="col-md-5 col-md-offset-1">
+				<span class="col-md-4">姓名：</span> 
+                <span class="col-md-8" id="name"></span>
+			</p>
+			<p class="col-md-5 col-md-offset-1">
+				<span class="col-md-4">性别：</span> 
+                <span class="col-md-8" id="sex"></span>
+		    </p>
+        </div>
+		<div class="row">
+			<p class="col-md-5 col-md-offset-1">
+				<span class="col-md-4">有效期至：</span> 
+                <span class="col-md-8" id="date"></span>
+			</p>
+			<p class="col-md-5 col-md-offset-1">
+				<span class="col-md-4">证书编号：</span> 
+                <span class="col-md-8" id="number"></span>
+			</p>
+		</div>
+		<div class="row">
+			<div class="img-container col-md-9 col-md-offset-1">
+				<img src="" width="100%" alt="" id="img">
+				<!-- <img src="./img/user/m001.jpg" width="100%" alt="" id="img"> -->
+				<!-- <div class="add-img">
+					<img src="http://api.zhitaosoft.com:80/dzzz/static/img/gg.png">
+				</div> -->
+			</div>
+		</div>
+	</div>
 </body>
+<script src="./jquery.js"></script>
+<script src="./bootstrap.min.js"></script>
+<script>
+    const user_info = [
+        {
+            name: '邢余良',
+            sex: '男',
+            date: '2027年7月31日',
+            number :'陕A042015001506',
+            certificate_src: './m001.jpg'
+        },
+        {
+            name: '范爱侠',
+            sex: '女',
+            date: '2024年12月12日',
+            number :'陕A042018001222',
+            certificate_src: './m002.jpg'
+        }
+    ]
+    var searchURL = window.location.search;  
+    searchURL = searchURL.substring(1, searchURL.length);
+    //console.log('------1->',searchURL)
+    var targetPageId = searchURL.split("&")[0].split("=")[1]; 
+    //console.log('------2->',targetPageId)
+    if(targetPageId === "M001"){
+        document.getElementById('name').innerText = user_info[0].name
+        document.getElementById('sex').innerText = user_info[0].sex
+        document.getElementById('date').innerText = user_info[0].date
+        document.getElementById('number').innerText = user_info[0].number
+        document.getElementById('img').src = user_info[0].certificate_src
+    }else{
+        document.getElementById('name').innerText = user_info[1].name
+        document.getElementById('sex').innerText = user_info[1].sex
+        document.getElementById('date').innerText = user_info[1].date
+        document.getElementById('number').innerText = user_info[1].number
+        document.getElementById('img').src = user_info[1].certificate_src
+    }
+</script>
 </html>
