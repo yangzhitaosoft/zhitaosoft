@@ -176,6 +176,13 @@ img{
             date: '2024年12月12日',
             number :'陕A042018001222',
             certificate_src: './m002.jpg'
+        },
+	{
+            name: '姜林娜',
+            sex: '女',
+            date: '2027年02月08日',
+            number :'陕A062021000279',
+            certificate_src: './m003.jpg'
         }
     ]
     var searchURL = window.location.search;  
@@ -189,12 +196,18 @@ img{
         document.getElementById('date').innerText = user_info[0].date
         document.getElementById('number').innerText = user_info[0].number
         document.getElementById('img').src = user_info[0].certificate_src
-    }else{
+    }else if(targetPageId === "M002"){
         document.getElementById('name').innerText = user_info[1].name
         document.getElementById('sex').innerText = user_info[1].sex
         document.getElementById('date').innerText = user_info[1].date
         document.getElementById('number').innerText = user_info[1].number
         document.getElementById('img').src = user_info[1].certificate_src
+    }else{
+        document.getElementById('name').innerText = user_info[2].name
+        document.getElementById('sex').innerText = user_info[2].sex
+        document.getElementById('date').innerText = user_info[2].date
+        document.getElementById('number').innerText = user_info[2].number
+        document.getElementById('img').src = user_info[2].certificate_src
     }
 </script>
 </html>
